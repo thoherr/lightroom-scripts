@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+# This is the start script for all our scripts
+
+require File.expand_path('../../config/setup',  __FILE__)
+
+require File.expand_path('../../src/scripts/list_library_files',  __FILE__)
