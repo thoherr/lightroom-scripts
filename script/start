@@ -3,11 +3,13 @@
 
 require File.expand_path('../../config/setup',  __FILE__)
 require File.expand_path('../../src/scripts/list_library_files',  __FILE__)
+require File.expand_path('../../src/scripts/list_images',  __FILE__)
 
 def usage
   puts "usage: start <DBNAME> <command> [optional parameters]"
   puts "      where <command> is one of"
   puts "         list_library_files"
+  puts "         list_images"
 end
 
 arg_count = ARGV.length
@@ -26,6 +28,8 @@ else
   case command
   when 'list_library_files'
     ListLibraryFiles.run(ARGV[2, arg_count-2])
+  when 'list_images'
+    ListImages.run(ARGV[2, arg_count-2])
   else
     usage
   end
