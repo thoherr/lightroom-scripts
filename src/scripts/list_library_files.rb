@@ -5,7 +5,7 @@ class ListLibraryFiles
   
   def self.run(args)
     AgLibraryFile.find do | f |
-      puts f.originalFilename
+      puts "#{f.id_local} #{f.originalFilename}"
     end
   end
   
