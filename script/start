@@ -2,5 +2,31 @@
 # This is the start script for all our scripts
 
 require File.expand_path('../../config/setup',  __FILE__)
-
 require File.expand_path('../../src/scripts/list_library_files',  __FILE__)
+
+def usage
+  puts "usage: start <DBNAME> <command> [optional parameters]"
+  puts "      where <command> is one of"
+  puts "         list_library_files"
+end
+
+arg_count = ARGV.length
+
+if arg_count < 2
+  usage
+else
+  db_name = ARGV[0]
+  command = ARGV[1]
+
+  ActiveRecord::Base.establish_connection(
+    :adapter => 'sqlite3',
+    :database => db_name
+  )
+  
+  case command
+  when 'list_library_files'
+    ListLibraryFiles.run(ARGV[2, arg_count-2])
+  else
+    usage
+  end
+end

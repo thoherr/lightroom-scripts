@@ -3,7 +3,10 @@ require File.expand_path('../../models/ag_library_file', __FILE__)
 
 class ListLibraryFiles
   
-  def run
+  def self.run(args)
+    AgLibraryFile.find do | f |
+      puts f.originalFilename
+    end
   end
   
 end
