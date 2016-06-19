@@ -19,17 +19,18 @@ if arg_count < 2
 else
   db_name = ARGV[0]
   command = ARGV[1]
+  command_args=ARGV[2, arg_count-2]
 
   ActiveRecord::Base.establish_connection(
     :adapter => 'sqlite3',
     :database => db_name
   )
-  
+
   case command
   when 'list_library_files'
-    ListLibraryFiles.run(ARGV[2, arg_count-2])
+    ListLibraryFiles.run(command_args)
   when 'list_images'
-    ListImages.run(ARGV[2, arg_count-2])
+    ListImages.run(command_args)
   else
     usage
   end
